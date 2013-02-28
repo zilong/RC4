@@ -8,8 +8,8 @@
  */
 public class RC4 {
 
-	byte[] 						S = new byte[256];
-	byte[] 						T = new byte[256];
+	private byte[] 						S = new byte[256];
+	private byte[] 						T = new byte[256];
 	
 	public RC4 (byte[] key)
 	{
@@ -42,7 +42,7 @@ public class RC4 {
 	public static String byteToString (byte[] data) 
 	{
 		return data.toString();
-    }
+	}
 	
 	
 	/**
@@ -62,10 +62,11 @@ public class RC4 {
 	 */
 	public byte[] encrypt(byte[] plaintext)
 	{	
-		int					j = 0, i = 0, t, k;
+		int				j = 0, i = 0, t, k;
 		byte				temp;
 		byte[]				pt,ct, s;
-		
+	
+		//deep copy	
 		s = S.clone();
 
 		pt = plaintext;
@@ -99,7 +100,5 @@ public class RC4 {
 	public byte[] decrypt(byte[] ciphertext)
 	{
 		return encrypt(ciphertext);
-	}
-	
-	
+	}	
 }
